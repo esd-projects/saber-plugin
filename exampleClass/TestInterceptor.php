@@ -9,7 +9,7 @@
 namespace GoSwoole\Plugins\Saber\ExampleClass;
 
 
-use GoSwoole\BaseServer\Server\Server;
+use GoSwoole\BaseServer\Plugins\Logger\GetLogger;
 use GoSwoole\Plugins\Saber\Interceptors\BeforeInterceptor;
 use Swlib\Saber\Request;
 
@@ -20,10 +20,11 @@ use Swlib\Saber\Request;
  */
 class TestInterceptor extends BeforeInterceptor
 {
+    use GetLogger;
 
     public function handle(Request $request)
     {
-        Server::$instance->getLog()->info($request->getUri()->getPath());
+        $this->info($request->getUri()->getPath());
     }
 
     /**
