@@ -1,0 +1,371 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: 白猫
+ * Date: 2019/4/24
+ * Time: 18:30
+ */
+
+namespace GoSwoole\Plugins\Saber;
+
+
+use Exception;
+use GoSwoole\Plugins\Saber\Interceptors\Interceptor;
+use Swlib\Http\ContentType;
+use Swlib\Http\Exception\HttpExceptionMask;
+
+class SaberConfig
+{
+    /**
+     * 基础路径
+     * @var string|null
+     */
+    private $baseUri;
+
+    /**
+     * 用户代理
+     * @var string|null
+     */
+    private $useragent;
+
+    /**
+     * 来源地址
+     * @var string|null
+     */
+    private $referer;
+
+    /**
+     * 重定向次数
+     * @var int
+     */
+    private $redirect = 3;
+
+    /**
+     * 发送的内容编码类型
+     * @var string
+     */
+    private $contentType = ContentType::JSON;
+
+    /**
+     * 是否保持连接
+     * @var bool
+     */
+    private $keepAlive = true;
+
+    /**
+     * 默认5s, 支持毫秒级超时
+     * @var float
+     */
+    private $timeout = 5;
+
+    /**
+     * 代理,支持http和socks5
+     * @var string
+     */
+    private $proxy;
+
+    /**
+     * 验证服务器端证书
+     * @var bool
+     */
+    private $sslVerifyPeer = false;
+
+    /**
+     * 允许自签名证书
+     * @var bool
+     */
+    private $sslAllowSelfSigned = true;
+
+    /**
+     * 异常报告级别
+     * @var int
+     */
+    private $exceptionReport = HttpExceptionMask::E_ALL;
+
+    /**
+     * 自动重试次数
+     * @var int
+     */
+    private $retryTime = 3;
+
+    /**
+     * 拦截器
+     * @var Interceptor[]
+     */
+    private $interceptors = [];
+
+    /**
+     * 连接池 bool|int
+     * @var bool
+     */
+    private $usePool = true;
+
+    /**
+     * 添加Saber全局拦截器
+     * @param Interceptor $interceptor
+     */
+    public function addInterceptor(Interceptor $interceptor)
+    {
+        $this->interceptors[] = $interceptor;
+    }
+
+    /**
+     * @return array
+     */
+    public function getInterceptors()
+    {
+        return $this->interceptors;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getBaseUri()
+    {
+        return $this->baseUri;
+    }
+
+    /**
+     * @param string|null $baseUri
+     */
+    public function setBaseUri($baseUri)
+    {
+        $this->baseUri = $baseUri;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUseragent()
+    {
+        return $this->useragent;
+    }
+
+    /**
+     * @param string|null $useragent
+     */
+    public function setUseragent($useragent)
+    {
+        $this->useragent = $useragent;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReferer()
+    {
+        return $this->referer;
+    }
+
+    /**
+     * @param string|null $referer
+     */
+    public function setReferer($referer)
+    {
+        $this->referer = $referer;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRedirect()
+    {
+        return $this->redirect;
+    }
+
+    /**
+     * @param int $redirect
+     */
+    public function setRedirect(int $redirect)
+    {
+        $this->redirect = $redirect;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContentType()
+    {
+        return $this->contentType;
+    }
+
+    /**
+     * @param string $contentType
+     */
+    public function setContentType($contentType)
+    {
+        $this->contentType = $contentType;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isKeepAlive()
+    {
+        return $this->keepAlive;
+    }
+
+    /**
+     * @param bool $keepAlive
+     */
+    public function setKeepAlive(bool $keepAlive)
+    {
+        $this->keepAlive = $keepAlive;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTimeout()
+    {
+        return $this->timeout;
+    }
+
+    /**
+     * @param float $timeout
+     */
+    public function setTimeout(float $timeout)
+    {
+        $this->timeout = $timeout;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProxy()
+    {
+        return $this->proxy;
+    }
+
+    /**
+     * @param string $proxy
+     */
+    public function setProxy($proxy)
+    {
+        $this->proxy = $proxy;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSslVerifyPeer()
+    {
+        return $this->sslVerifyPeer;
+    }
+
+    /**
+     * @param bool $sslVerifyPeer
+     */
+    public function setSslVerifyPeer(bool $sslVerifyPeer)
+    {
+        $this->sslVerifyPeer = $sslVerifyPeer;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSslAllowSelfSigned()
+    {
+        return $this->sslAllowSelfSigned;
+    }
+
+    /**
+     * @param bool $sslAllowSelfSigned
+     */
+    public function setSslAllowSelfSigned(bool $sslAllowSelfSigned)
+    {
+        $this->sslAllowSelfSigned = $sslAllowSelfSigned;
+    }
+
+    /**
+     * @return int
+     */
+    public function getExceptionReport()
+    {
+        return $this->exceptionReport;
+    }
+
+    /**
+     * @param int $exceptionReport
+     */
+    public function setExceptionReport(int $exceptionReport)
+    {
+        $this->exceptionReport = $exceptionReport;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRetryTime()
+    {
+        return $this->retryTime;
+    }
+
+    /**
+     * @param int $retryTime
+     */
+    public function setRetryTime(int $retryTime)
+    {
+        $this->retryTime = $retryTime;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUsePool()
+    {
+        return $this->usePool;
+    }
+
+    /**
+     * @param bool $usePool
+     */
+    public function setUsePool(bool $usePool)
+    {
+        $this->usePool = $usePool;
+    }
+
+    /**
+     * 异常处理回调
+     * @param Exception $e
+     */
+    public function exceptionHandle(Exception $e)
+    {
+
+    }
+
+    /**
+     * 构建配置
+     * @return array
+     */
+    public function buildConfig()
+    {
+        $map = [];
+        foreach ($this->interceptors as $interceptor) {
+            if (!isset($map[$interceptor->getType()])) {
+                $map[$interceptor->getType()] = [];
+            }
+            $map[$interceptor->getType()][$interceptor->getName()] = [$interceptor, "handle"];
+        }
+        return [
+            'base_uri' => $this->baseUri,
+            'useragent' => $this->useragent,
+            'referer' => $this->referer,
+            'redirect' => $this->redirect,
+            'keep_alive' => $this->keepAlive,
+            'content_type' => $this->contentType,
+            'timeout' => $this->timeout,
+            'proxy' => $this->proxy,
+            'ssl_verify_peer' => $this->sslVerifyPeer,
+            'ssl_allow_self_signed' => $this->isSslAllowSelfSigned(),
+            'exception_report' => $this->exceptionReport,
+            'exception_handle' => [$this, "exceptionHandle"],
+            'retry_time' => $this->retryTime,
+            'use_pool' => $this->usePool,
+            "before" => $map["before"] ?? null,
+            "after" => $map["after"] ?? null,
+            "before_redirect" => $map["before_redirect"] ?? null,
+            "retry" => $map["before_redirect"] ?? null,
+        ];
+    }
+}
