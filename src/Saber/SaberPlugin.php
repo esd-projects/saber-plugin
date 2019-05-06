@@ -19,10 +19,19 @@ class SaberPlugin extends AbstractPlugin
      */
     private $saberConfig;
 
+    /**
+     * SaberPlugin constructor.
+     * @param null $saberConfig
+     * @throws \DI\DependencyException
+     * @throws \ReflectionException
+     */
     public function __construct($saberConfig = null)
     {
         parent::__construct();
         $this->saberConfig = $saberConfig;
+        if ($this->saberConfig == null) {
+            $this->saberConfig = new SaberConfig();
+        }
     }
 
     /**
@@ -38,12 +47,11 @@ class SaberPlugin extends AbstractPlugin
      * 在服务启动前
      * @param Context $context
      * @return mixed
+     * @throws \GoSwoole\BaseServer\Server\Exception\ConfigException
      */
     public function beforeServerStart(Context $context)
     {
-        if ($this->saberConfig == null) {
-            $this->saberConfig = new SaberConfig();
-        }
+        $this->saberConfig->merge();
         SaberGM::default($this->saberConfig->buildConfig());
     }
 

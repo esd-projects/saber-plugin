@@ -36,7 +36,7 @@ $server->addPort("ws", $wsPortConfig, TestPort::class);
 //添加插件
 $sabeConfig = new SaberConfig();
 //添加全局拦截器
-$sabeConfig->addInterceptor(new TestInterceptor());
+$sabeConfig->addInterceptorClass(TestInterceptor::class);
 $server->getPlugManager()->addPlug(new SaberPlugin($sabeConfig));
 //添加进程
 $server->addProcess("test1");

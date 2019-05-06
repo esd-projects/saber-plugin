@@ -10,101 +10,112 @@ namespace GoSwoole\Plugins\Saber;
 
 
 use Exception;
+use GoSwoole\BaseServer\Plugins\Config\BaseConfig;
 use GoSwoole\Plugins\Saber\Interceptors\Interceptor;
 use Swlib\Http\ContentType;
 use Swlib\Http\Exception\HttpExceptionMask;
 
-class SaberConfig
+class SaberConfig extends BaseConfig
 {
+    const key = "saber";
     /**
      * 基础路径
      * @var string|null
      */
-    private $baseUri;
+    protected $baseUri;
 
     /**
      * 用户代理
      * @var string|null
      */
-    private $useragent;
+    protected $useragent;
 
     /**
      * 来源地址
      * @var string|null
      */
-    private $referer;
+    protected $referer;
 
     /**
      * 重定向次数
      * @var int
      */
-    private $redirect = 3;
+    protected $redirect = 3;
 
     /**
      * 发送的内容编码类型
      * @var string
      */
-    private $contentType = ContentType::JSON;
+    protected $contentType = ContentType::JSON;
 
     /**
      * 是否保持连接
      * @var bool
      */
-    private $keepAlive = true;
+    protected $keepAlive = true;
 
     /**
      * 默认5s, 支持毫秒级超时
      * @var float
      */
-    private $timeout = 5;
+    protected $timeout = 5;
 
     /**
      * 代理,支持http和socks5
      * @var string
      */
-    private $proxy;
+    protected $proxy;
 
     /**
      * 验证服务器端证书
      * @var bool
      */
-    private $sslVerifyPeer = false;
+    protected $sslVerifyPeer = false;
 
     /**
      * 允许自签名证书
      * @var bool
      */
-    private $sslAllowSelfSigned = true;
+    protected $sslAllowSelfSigned = true;
 
     /**
      * 异常报告级别
      * @var int
      */
-    private $exceptionReport = HttpExceptionMask::E_ALL;
+    protected $exceptionReport = HttpExceptionMask::E_ALL;
 
     /**
      * 自动重试次数
      * @var int
      */
-    private $retryTime = 3;
+    protected $retryTime = 3;
 
     /**
      * 拦截器
-     * @var Interceptor[]
+     * @var string[]
      */
-    private $interceptors = [];
+    protected $interceptors = [];
 
     /**
      * 连接池 bool|int
      * @var bool
      */
-    private $usePool = true;
+    protected $usePool = true;
+
+    /**
+     * SaberConfig constructor.
+     * @throws \ReflectionException
+     */
+    public function __construct()
+    {
+        parent::__construct(self::key);
+    }
 
     /**
      * 添加Saber全局拦截器
-     * @param Interceptor $interceptor
+     * @param string $interceptor
      */
-    public function addInterceptor(Interceptor $interceptor)
+    public function addInterceptorClass(string $interceptor)
     {
         $this->interceptors[] = $interceptor;
     }
@@ -341,11 +352,14 @@ class SaberConfig
     public function buildConfig()
     {
         $map = [];
-        foreach ($this->interceptors as $interceptor) {
-            if (!isset($map[$interceptor->getType()])) {
-                $map[$interceptor->getType()] = [];
+        foreach ($this->interceptors as $interceptorClass) {
+            $interceptor = new $interceptorClass();
+            if ($interceptor instanceof Interceptor) {
+                if (!isset($map[$interceptor->getType()])) {
+                    $map[$interceptor->getType()] = [];
+                }
+                $map[$interceptor->getType()][$interceptor->getName()] = [$interceptor, "handle"];
             }
-            $map[$interceptor->getType()][$interceptor->getName()] = [$interceptor, "handle"];
         }
         return [
             'base_uri' => $this->baseUri,
