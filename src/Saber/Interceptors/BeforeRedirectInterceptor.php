@@ -6,7 +6,7 @@
  * Time: 9:29
  */
 
-namespace GoSwoole\Plugins\Saber\Interceptors;
+namespace ESD\Plugins\Saber\Interceptors;
 
 use Swlib\Saber\Request;
 use Swlib\Saber\Response;
@@ -14,7 +14,7 @@ use Swlib\Saber\Response;
 /**
  * before拦截器
  * Class BeforeInterceptor
- * @package GoSwoole\Plugins\Saber\Interceptors
+ * @package ESD\Plugins\Saber\Interceptors
  */
 abstract class BeforeRedirectInterceptor extends Interceptor
 {

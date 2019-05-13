@@ -6,17 +6,17 @@
  * Time: 10:07
  */
 
-namespace GoSwoole\Plugins\Saber\ExampleClass;
+namespace ESD\Plugins\Saber\ExampleClass;
 
 
-use GoSwoole\BaseServer\Plugins\Logger\GetLogger;
-use GoSwoole\Plugins\Saber\Interceptors\BeforeInterceptor;
+use ESD\BaseServer\Plugins\Logger\GetLogger;
+use ESD\Plugins\Saber\Interceptors\BeforeInterceptor;
 use Swlib\Saber\Request;
 
 /**
  * 测试全局拦截器
  * Class TestInterceptor
- * @package GoSwoole\Plugins\Saber\ExampleClass
+ * @package ESD\Plugins\Saber\ExampleClass
  */
 class TestInterceptor extends BeforeInterceptor
 {

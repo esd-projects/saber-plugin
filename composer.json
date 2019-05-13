@@ -1,12 +1,12 @@
 {
   "require": {
-    "go-swoole/base-server":"~0.1",
+    "esd/base-server":"~0.1",
     "swlib/saber": "^1.0"
   },
   "autoload": {
     "psr-4": {
-      "GoSwoole\\Plugins\\": "src/",
-      "GoSwoole\\Plugins\\Saber\\ExampleClass\\": "exampleClass/"
+      "ESD\\Plugins\\": "src/",
+      "ESD\\Plugins\\Saber\\ExampleClass\\": "exampleClass/"
     }
   },
   "authors": [
@@ -16,7 +16,7 @@
       "homepage": "https://github.com/tmtbe"
     }
   ],
-  "name": "go-swoole/saber-plugin",
+  "name": "esd/saber-plugin",
   "type": "library",
   "keywords": ["server", "swoole"],
   "description": "saber-plugin",

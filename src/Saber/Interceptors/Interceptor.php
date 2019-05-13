@@ -6,12 +6,12 @@
  * Time: 9:25
  */
 
-namespace GoSwoole\Plugins\Saber\Interceptors;
+namespace ESD\Plugins\Saber\Interceptors;
 
 /**
  * 拦截器实例
  * Class Interceptor
- * @package GoSwoole\Plugins\Saber
+ * @package ESD\Plugins\Saber
  */
 abstract class Interceptor
 {

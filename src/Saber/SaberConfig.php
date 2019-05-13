@@ -6,12 +6,12 @@
  * Time: 18:30
  */
 
-namespace GoSwoole\Plugins\Saber;
+namespace ESD\Plugins\Saber;
 
 
 use Exception;
-use GoSwoole\BaseServer\Plugins\Config\BaseConfig;
-use GoSwoole\Plugins\Saber\Interceptors\Interceptor;
+use ESD\BaseServer\Plugins\Config\BaseConfig;
+use ESD\Plugins\Saber\Interceptors\Interceptor;
 use Swlib\Http\ContentType;
 use Swlib\Http\Exception\HttpExceptionMask;
 

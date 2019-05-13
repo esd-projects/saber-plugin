@@ -6,10 +6,10 @@
  * Time: 17:57
  */
 
-namespace GoSwoole\Plugins\Saber;
+namespace ESD\Plugins\Saber;
 
-use GoSwoole\BaseServer\Server\Context;
-use GoSwoole\BaseServer\Server\Plugin\AbstractPlugin;
+use ESD\BaseServer\Server\Context;
+use ESD\BaseServer\Server\Plugin\AbstractPlugin;
 use Swlib\SaberGM;
 
 class SaberPlugin extends AbstractPlugin
@@ -47,7 +47,7 @@ class SaberPlugin extends AbstractPlugin
      * 在服务启动前
      * @param Context $context
      * @return mixed
-     * @throws \GoSwoole\BaseServer\Server\Exception\ConfigException
+     * @throws \ESD\BaseServer\Server\Exception\ConfigException
      */
     public function beforeServerStart(Context $context)
     {

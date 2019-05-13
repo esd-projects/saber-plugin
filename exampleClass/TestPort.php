@@ -6,10 +6,10 @@
  * Time: 18:21
  */
 
-namespace GoSwoole\Plugins\Saber\ExampleClass;
-use GoSwoole\BaseServer\ExampleClass\Server\DefaultServerPort;
-use GoSwoole\BaseServer\Server\Beans\Request;
-use GoSwoole\BaseServer\Server\Beans\Response;
+namespace ESD\Plugins\Saber\ExampleClass;
+use ESD\BaseServer\ExampleClass\Server\DefaultServerPort;
+use ESD\BaseServer\Server\Beans\Request;
+use ESD\BaseServer\Server\Beans\Response;
 use Swlib\SaberGM;
 
 class TestPort extends DefaultServerPort
