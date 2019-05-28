@@ -8,8 +8,8 @@
 
 namespace ESD\Plugins\Saber;
 
-use ESD\BaseServer\Server\Context;
-use ESD\BaseServer\Server\Plugin\AbstractPlugin;
+use ESD\Core\Context\Context;
+use ESD\Core\PlugIn\AbstractPlugin;
 use Swlib\SaberGM;
 
 class SaberPlugin extends AbstractPlugin
@@ -24,6 +24,7 @@ class SaberPlugin extends AbstractPlugin
      * @param null $saberConfig
      * @throws \DI\DependencyException
      * @throws \ReflectionException
+     * @throws \DI\NotFoundException
      */
     public function __construct($saberConfig = null)
     {
@@ -46,8 +47,9 @@ class SaberPlugin extends AbstractPlugin
     /**
      * 在服务启动前
      * @param Context $context
-     * @return mixed
-     * @throws \ESD\BaseServer\Server\Exception\ConfigException
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
+     * @throws \ESD\Core\Plugins\Config\ConfigException
      */
     public function beforeServerStart(Context $context)
     {
@@ -58,7 +60,6 @@ class SaberPlugin extends AbstractPlugin
     /**
      * 在进程启动前
      * @param Context $context
-     * @return mixed
      */
     public function beforeProcessStart(Context $context)
     {

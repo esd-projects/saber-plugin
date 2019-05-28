@@ -1,6 +1,6 @@
 {
   "require": {
-    "esd/base-server":"~0.1",
+    "esd/esd-core":"~0.1",
     "swlib/saber": "^1.0"
   },
   "autoload": {

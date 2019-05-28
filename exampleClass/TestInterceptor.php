@@ -8,8 +8,7 @@
 
 namespace ESD\Plugins\Saber\ExampleClass;
 
-
-use ESD\BaseServer\Plugins\Logger\GetLogger;
+use ESD\Core\Plugins\Logger\GetLogger;
 use ESD\Plugins\Saber\Interceptors\BeforeInterceptor;
 use Swlib\Saber\Request;
 
