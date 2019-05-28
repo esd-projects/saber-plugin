@@ -1,12 +1,12 @@
 <?php
 
-use ESD\BaseServer\ExampleClass\Server\DefaultServer;
-use ESD\BaseServer\Server\Config\PortConfig;
-use ESD\BaseServer\Server\Config\ServerConfig;
+use ESD\Core\Server\Config\PortConfig;
+use ESD\Core\Server\Config\ServerConfig;
 use ESD\Plugins\Saber\ExampleClass\TestInterceptor;
 use ESD\Plugins\Saber\ExampleClass\TestPort;
 use ESD\Plugins\Saber\SaberConfig;
 use ESD\Plugins\Saber\SaberPlugin;
+use ESD\Server\Co\ExampleClass\DefaultServer;
 
 require __DIR__ . '/../vendor/autoload.php';
 

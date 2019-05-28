@@ -7,12 +7,12 @@
  */
 
 namespace ESD\Plugins\Saber\ExampleClass;
-use ESD\BaseServer\ExampleClass\Server\DefaultServerPort;
-use ESD\BaseServer\Server\Beans\Request;
-use ESD\BaseServer\Server\Beans\Response;
+use ESD\Core\Server\Beans\Request;
+use ESD\Core\Server\Beans\Response;
+use ESD\Server\Co\ExampleClass\Port\DefaultPort;
 use Swlib\SaberGM;
 
-class TestPort extends DefaultServerPort
+class TestPort extends DefaultPort
 {
     public function onHttpRequest(Request $request, Response $response)
     {

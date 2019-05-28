@@ -3,6 +3,9 @@
     "esd/esd-core":"~0.1",
     "swlib/saber": "^1.0"
   },
+  "require-dev": {
+    "esd/esd-co-server":"~0.1"
+  },
   "autoload": {
     "psr-4": {
       "ESD\\Plugins\\": "src/",
