@@ -82,7 +82,7 @@ class SaberConfig extends BaseConfig
      * 异常报告级别
      * @var int
      */
-    protected $exceptionReport = HttpExceptionMask::E_ALL;
+    protected $exceptionReport = HttpExceptionMask::E_NONE;
 
     /**
      * 自动重试次数
@@ -339,7 +339,6 @@ class SaberConfig extends BaseConfig
     /**
      * 异常处理回调
      * @param \Throwable $e
-     * @return bool
      * @throws \DI\DependencyException
      * @throws \DI\NotFoundException
      */
