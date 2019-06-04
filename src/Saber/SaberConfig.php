@@ -339,12 +339,14 @@ class SaberConfig extends BaseConfig
     /**
      * 异常处理回调
      * @param \Throwable $e
+     * @return bool
      * @throws \DI\DependencyException
      * @throws \DI\NotFoundException
      */
     public function exceptionHandle(\Throwable $e)
     {
         Server::$instance->getLog()->error($e);
+        return true;
     }
 
     /**
