@@ -9,9 +9,9 @@
 namespace ESD\Plugins\Saber;
 
 
-use ESD\Core\Exception;
 use ESD\Core\Plugins\Config\BaseConfig;
 use ESD\Plugins\Saber\Interceptors\Interceptor;
+use ESD\Server\Co\Server;
 use Swlib\Http\ContentType;
 use Swlib\Http\Exception\HttpExceptionMask;
 
@@ -338,11 +338,13 @@ class SaberConfig extends BaseConfig
 
     /**
      * 异常处理回调
-     * @param Exception $e
+     * @param \Throwable $e
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
      */
-    public function exceptionHandle(Exception $e)
+    public function exceptionHandle(\Throwable $e)
     {
-
+        Server::$instance->getLog()->error($e);
     }
 
     /**
@@ -373,7 +375,7 @@ class SaberConfig extends BaseConfig
             'ssl_verify_peer' => $this->sslVerifyPeer,
             'ssl_allow_self_signed' => $this->isSslAllowSelfSigned(),
             'exception_report' => $this->exceptionReport,
-            'exception_handle' => [$this, "exceptionHandle"],
+            'exception_handle' => [[$this, "exceptionHandle"]],
             'retry_time' => $this->retryTime,
             'use_pool' => $this->usePool,
             "before" => $map["before"] ?? null,
